@@ -1,0 +1,21 @@
+name: "backend-api"
+
+services:
+   api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "5500:5500"
+    environment:
+     - PORT=5500
+    restart: unless-stopped 
+    volumes:
+      - .:/app
+    networks:
+     - app-network
+
+networks:
+  app-network:
+    driver: bridge
