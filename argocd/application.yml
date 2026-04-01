@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoUrl: https://github.com/manityatyagi/argocd-k8s.git
+    repoURL: https://github.com/manityatyagi/argocd-k8s.git
     targetRevision: main
     path: k8s/backend-api
   destination:
