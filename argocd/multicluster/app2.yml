@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1 
+kind: Application
+metadata:
+    name: app2
+    namespace: argocd
+spec: 
+  project: simple-project
+  source:
+    repoURL: https://github.com/manityatyagi/argocd-k8s.git
+    targetRevision: main 
+    path: k8s/nginx
+  destination:
+    server: argocd-cluster
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

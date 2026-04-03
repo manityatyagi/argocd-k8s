@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata: 
+    name: simple-project
+    namespace: argocd
+spec: 
+   description: this is a pretty simple project
+   sourceRepos: https://github.com/manityatyagi/argocd-k8s.git
+   destinations: 
+    - namespace: argocd
+      server: https://kubernetes.default.svc
+   clusterResourceWhitelist:   
+    - group: "*"             
+      kind: "*"                
+   namespaceResourceWhitelist:  
+    - group: "*"            
+      kind: "*"
+   roles: 
+     - name: project-admins
+       description: admins for the project
+       policies: 
+         - p, proj:simple-project:project-admins, applications, *, simple-project/*, allow
