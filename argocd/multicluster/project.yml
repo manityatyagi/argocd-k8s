@@ -5,7 +5,8 @@ metadata:
     namespace: argocd
 spec: 
    description: this is a pretty simple project
-   sourceRepos: https://github.com/manityatyagi/argocd-k8s.git
+   sourceRepos: 
+     - https://github.com/manityatyagi/argocd-k8s.git
    destinations: 
     - namespace: argocd
       server: https://kubernetes.default.svc
