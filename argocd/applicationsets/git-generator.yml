@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+    name: git-demo
+    namespace: argocd
+spec:
+   generators: 
+     - git: 
+         repoURL: https://github.com/manityatyagi/argocd-k8s.git 
+         revision: main 
+         directories:
+           - path: "k8s/*"
+   template: 
+     metadata:
+       name: '{{path.basename}}-git'
+     spec:
+       project: default
+       source: 
+          repoURL: https://github.com/manityatyagi/argocd-k8s.git
+          targetRevision: main 
+          path: '{{path}}'
+       destination:
+          server: https://kubernetes.default.svc
+          namespace: argocd
+       syncPolicy:
+         automated:
+           prune: true
+           selfHeal: true
+
+
+      
+     
