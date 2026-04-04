@@ -14,7 +14,7 @@ spec:
      metadata:
        name: '{{path.basename}}-git'
      spec:
-       project: default
+       project: simple-project
        source: 
           repoURL: https://github.com/manityatyagi/argocd-k8s.git
           targetRevision: main 
